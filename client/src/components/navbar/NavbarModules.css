@@ -1,0 +1,21 @@
+header {
+  /* background-color: #5232C6; */
+  background-color: #673DE6;
+}
+
+header .nav-list {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  padding: 15px 0 ;
+}
+
+header .nav-list .nav-left,
+header .nav-list .nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}

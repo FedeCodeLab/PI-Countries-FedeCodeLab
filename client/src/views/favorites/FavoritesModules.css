@@ -1,0 +1,6 @@
+.favorites {
+  background-image: url('../../../img/montains.jpeg');
+  object-fit: cover;
+  background-size: cover;
+  background-attachment: fixed;
+}

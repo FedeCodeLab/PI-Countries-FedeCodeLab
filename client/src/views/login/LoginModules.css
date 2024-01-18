@@ -1,0 +1,10 @@
+.login {
+  background-image: url('../../../img/mountains.jpg');
+  object-fit: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  /* background: linear-gradient(to right, #6647D1, #8C70E7); */
+}
