@@ -5,7 +5,7 @@ import Cards from '../../components/cards/Cards';
 export default function Favorites () {
   return (
     <div className="favorites">
-      <Cards />
+      {/* <Cards /> */}
       <Pagination />
     </div>
   )

@@ -4,9 +4,12 @@
   justify-content: center;
   margin-top: 30px;
   padding-bottom: 60px;
+  list-style: none;
+  gap: 7px;
+  user-select: none;
 }
 
-.pagination ul {
+.pagination .page-item {
   list-style: none;
   display: flex;
   align-items: center;
@@ -14,11 +17,12 @@
   gap: 10px;
 }
 
-.pagination ul li {
+.pagination .page-item .page-link {
   display: inline-block;
   background-color: #5A3AC9;
   color: #fff;
-  padding: 10px 15px;
+  min-width: 50px;
+  border-radius: 50px;
   min-height: 50px;
   list-style: none;
   display: flex;
@@ -26,14 +30,13 @@
   align-items: center;
   cursor: pointer;
   user-select: none;
-  border-radius: 50px;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   -ms-border-radius: 50px;
   -o-border-radius: 50px;
 }
 
-.pagination ul li:hover {
+.pagination .page-item .page-link:hover {
   background-color: #4925ca;
 }
 
@@ -45,7 +48,7 @@
   padding: 0 25px;
 }
 
-.pagination .disabled {
+/* .pagination .disabled {
   cursor: not-allowed;
   color: #ffffff;
   background-color: #BBC2C8;
@@ -54,10 +57,52 @@
 .pagination .disabled:hover {
   color: #ffffff;
   background-color: #BBC2C8;
+} */
+
+.pagination .previous-link,
+.pagination .next-link {
+  background-color: #5A3AC9;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+  padding: 10px;
+  height: 50px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
-.pagination .select {
+.pagination .previous-link:hover ,
+.pagination .next-link:hover {
   background-color: #4925ca;
-  cursor: not-allowed;
+}
 
+/* .pagination .active-link{
+  background-color: #4925ca;
+
+} */
+
+.pagination .disabled-link {
+  cursor: not-allowed;
+  color: #ffffff;
+  background-color: #BBC2C8;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.pagination .disabled-link:hover {
+  color: #ffffff;
+  background-color: #BBC2C8;
+}
+
+.pagination .active-link {
+  background-color: #4925ca !important;
+  cursor: not-allowed !important;
 }

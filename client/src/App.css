@@ -9,6 +9,10 @@
   -o-transition: all .2s ease;
 }
 
+#root {
+  background-color: #030620;
+}
+
 .dark {
   background-color: #12192C;
 }

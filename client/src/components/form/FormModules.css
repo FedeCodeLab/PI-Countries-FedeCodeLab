@@ -28,14 +28,15 @@
   -o-border-radius: 10px 0 0 10px;
 }
 
-.form .form-lft h3{
+.form-lft h3{
   color: #5232C6;
   font-weight: 400;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .form .form-lft h1 {
   margin-bottom: 15px;
+  font-size: 1.2rem;
 }
 
 .form .form-lft h1 span {
@@ -116,3 +117,15 @@
   color: #fff;
 }
 
+.error {
+  font-size: .9rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3px;
+  text-align: center;
+  border: 1px solid #A94442;
+  color: #A94442;
+  background-color: #F2DEDE;
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
