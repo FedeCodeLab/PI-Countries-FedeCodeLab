@@ -6,7 +6,7 @@ export default function Favorites () {
   return (
     <div className="favorites">
       {/* <Cards /> */}
-      <Pagination />
+      {/* <Pagination /> */}
     </div>
   )
 }

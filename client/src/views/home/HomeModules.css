@@ -3,4 +3,39 @@
   object-fit: cover;
   background-size: cover;
   background-attachment: fixed;
+  /* font-family: 'Space Grotesk', sans-serif; */
+}
+
+.home .container .introduction {
+  display: flex;
+  padding-top: 60px;
+  letter-spacing: 1px;
+}
+
+.home .container .introduction .home-left,
+.home .container .introduction .home-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-direction: column;
+  color: rgb(230, 230, 242);
+  overflow: visible;
+
+}
+
+.home .container .introduction .home-left h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.home .container .introduction .home-left p {
+  font-size: 1.5rem;
+}
+
+.home .container .introduction .home-left button {
+  padding: 15px 30px;
+  font-size: 1rem;
 }

@@ -1,5 +1,5 @@
 .favorites {
-  background-image: url('../../../img/montains.jpeg');
+  min-height: 100vh;
   object-fit: cover;
   background-size: cover;
   background-attachment: fixed;

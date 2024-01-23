@@ -1,6 +1,5 @@
 header {
-  /* background-color: #5232C6; */
-  background-color: #673DE6;
+  box-shadow: 6px 6px 30px rgba(75, 0, 130, 0.3)
 }
 
 header .nav-list {
@@ -9,7 +8,7 @@ header .nav-list {
   align-items: center;
   justify-content: space-between;
   width: 90%;
-  padding: 15px 0 ;
+  padding: 15px 0;
 }
 
 header .nav-list .nav-left,
@@ -18,4 +17,26 @@ header .nav-list .nav-right {
   align-items: center;
   justify-content: center;
   gap: 15px;
+}
+
+header .nav-list .nav-right p:hover {
+  color: #5A3AC9;
+}
+
+header p {
+  color: rgb(133, 133, 166);
+  font-size: 1rem;
+  line-height: 1.5em;
+  font-weight: 600;
+}
+
+header .nav-left img{
+  width: 65px;
+  height: 65px;
+}
+
+header .nav-left h1{
+  margin-left: -15px;
+  color: #fff;
+  font-size: 2.5rem;
 }

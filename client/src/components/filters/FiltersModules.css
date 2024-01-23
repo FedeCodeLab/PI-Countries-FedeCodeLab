@@ -1,0 +1,21 @@
+.filters {
+  margin-top: 60px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.filters select,
+.filters input {
+  height: 40px;
+  background-color: #26263a;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
