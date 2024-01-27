@@ -1,16 +1,29 @@
-const Country = require('../models/Country');
-const Activity = require('../models/Activity');
+const {Country} = require ('../db')
+const {Activity} = require('../db')
 
-const getCountries = async (req, res) => {
-  try {
-    const countries = await Country.findAll({
-      include: Activity,
-    });
-    res.status(200).json(countries);
-  } catch (error) {
-    console.error('Error fetching countries:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-};
+//! FALTA ACTIVIDADES TURISTICAS
 
-module.exports = getCountries;
+const getCountries = async() => {
+    try {
+        const api = await fetch('http://localhost:5000/countries')
+        const data = await api.json()
+        const map = data.map((m) => ({
+            cca3: m.cca3,
+            nameCommon: m.name.common,
+            nameOfficial: m.name.official,
+            flag: m.flags.png,
+            capital: m.capital,
+            continent: m.continents,
+            subregion: m.subregion,
+            area: m.area,
+            population: m.population,
+        }))
+        await Country.bulkCreate(
+            map
+        )
+    } catch (error) {
+        console.error(error.message)
+    }
+}
+
+module.exports = getCountries

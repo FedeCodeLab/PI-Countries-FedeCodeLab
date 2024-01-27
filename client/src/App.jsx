@@ -6,7 +6,6 @@ import Login from './views/login/Login';
 import About from './views/about/About';
 import Detail from './views/detail/Detail';
 import Navbar from './components/navbar/Navbar';
-import Favorites from './views/favorites/Favorites';
 import Footer from './components/footer/Footer';
 const EMAIL = 'f@f.com';
 const PASSWORD = 'hola123';
@@ -38,10 +37,6 @@ function App() {
     setAccess(!access)
   }
 
-  // !------------------------------------------------------ Fetch
-
-  
-
   return (
     <div className='App'>
       {pathname !== '/' && <Navbar github={github} linkedIn={linkedIn} porfolio={PORFOLIO} exit={exit} />}
@@ -49,7 +44,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Login login={login} />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/favorites" element={<Favorites />} />
           <Route path="/about" element={<About github={github} linkedIn={linkedIn} porfolio={PORFOLIO} />} />
           <Route path="/detail/:id" element={<Detail />} />
         </Routes>

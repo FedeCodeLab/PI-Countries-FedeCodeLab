@@ -11,6 +11,10 @@ header .nav-list {
   padding: 15px 0;
 }
 
+header .nav-list .nav-left h1:hover{
+  color: #5A3AC9;
+}
+
 header .nav-list .nav-left,
 header .nav-list .nav-right {
   display: flex;
@@ -38,5 +42,5 @@ header .nav-left img{
 header .nav-left h1{
   margin-left: -15px;
   color: #fff;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }

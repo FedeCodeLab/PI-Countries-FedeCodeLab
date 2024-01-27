@@ -1,5 +1,5 @@
-import React from 'react';
 import './PaginationModules.css';
+import { smoothScrollToTop } from '../../functions/SmoothScroll';
 
 export default function Pagination({ countriesPerPage, totalCountries, currentPage, setCurrentPage }) {
   const pageNumbers = [];
@@ -9,11 +9,16 @@ export default function Pagination({ countriesPerPage, totalCountries, currentPa
   }
 
   const onPrevPage = () => {
-    setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   }
 
   const onNextPage = () => {
-    setCurrentPage(currentPage + 1);
+    const allPaginate = totalCountries / countriesPerPage;
+    if (currentPage < allPaginate) {
+      setCurrentPage(currentPage + 1);
+    }
   }
 
   const onPage = (n) => {
@@ -23,14 +28,14 @@ export default function Pagination({ countriesPerPage, totalCountries, currentPa
   return (
     <article className='pagination' key={currentPage}>
       <button
-        className={currentPage === 1 ? 'is_disabled' : 'prevNext'}
+        className={currentPage === 1 ? 'is_disabled' : 'text'}
         onClick={onPrevPage}
       >Prev</button>
-      <div>
+      <div className='numbers'>
         {pageNumbers.map(numPag =>
           <button
             key={numPag}
-            className={numPag === currentPage ? 'is_current' : 'num'}
+            className={numPag === currentPage ? 'isCurrent' : 'number'}
             onClick={() => onPage(numPag)}  // Pasa el número de página como argumento
           >
             {numPag}
@@ -38,7 +43,7 @@ export default function Pagination({ countriesPerPage, totalCountries, currentPa
         )}
       </div>
       <button
-        className={currentPage >= pageNumbers.length ? 'is_disabled' : 'prevNext'}
+        className={currentPage >= pageNumbers.length ? 'isDisabled' : 'text'}
         onClick={onNextPage}
       >Next</button>
     </article>

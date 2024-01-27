@@ -15,9 +15,6 @@ export default function Navbar ( {exit} ) {
             <Link to='/home'>
               <p>Home</p>
             </Link>
-            <Link to='/favorites'>
-              <p>Favorites</p>
-            </Link>
             <Link to='/about'>
               <p>About Me</p>
             </Link>

@@ -5,14 +5,16 @@ export default function Cards ( {countries} ) {
   return (
     <div className="container">
       <article className='cards'>
-        {countries.map(({ cca3, id, name, flags, continents, capital }) => (
+        {countries.map(({ cca3, id, nameCommon, flag, continent, capital, population, nameOfficial }) => (
           <Card
             key={cca3}
             id={cca3}
-            name={name}
-            flags={flags.png}
-            continents={continents}
+            nameCommon={nameCommon}
+            nameOfficial={nameOfficial}
+            flag={flag}
+            continent={continent}
             capital={capital}
+            population={population}
           />
         ))}
           

@@ -9,100 +9,23 @@
   user-select: none;
 }
 
-.pagination .page-item {
-  list-style: none;
+.pagination .numbers {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  gap: 5px;
 }
 
-.pagination .page-item .page-link {
-  display: inline-block;
-  background-color: #5A3AC9;
-  color: #fff;
-  min-width: 50px;
-  border-radius: 50px;
-  min-height: 50px;
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
+.pagination .numbers .number,
+.pagination .numbers .isCurrent {
+  width: 45px;
+  height: 45px;
 }
 
-.pagination .page-item .page-link:hover {
+.pagination .numbers .isCurrent {
   background-color: #4925ca;
-}
-
-.pagination .number {
-  min-width: 50px;
-}
-
-.pagination .text {
-  padding: 0 25px;
-}
-
-/* .pagination .disabled {
   cursor: not-allowed;
-  color: #ffffff;
+}
+
+.pagination .isDisabled {
   background-color: #BBC2C8;
-}
-
-.pagination .disabled:hover {
-  color: #ffffff;
-  background-color: #BBC2C8;
-} */
-
-.pagination .previous-link,
-.pagination .next-link {
-  background-color: #5A3AC9;
-  border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
-  padding: 10px;
-  height: 50px;
-  width: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.pagination .previous-link:hover ,
-.pagination .next-link:hover {
-  background-color: #4925ca;
-}
-
-/* .pagination .active-link{
-  background-color: #4925ca;
-
-} */
-
-.pagination .disabled-link {
   cursor: not-allowed;
-  color: #ffffff;
-  background-color: #BBC2C8;
-  border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
-}
-
-.pagination .disabled-link:hover {
-  color: #ffffff;
-  background-color: #BBC2C8;
-}
-
-.pagination .active-link {
-  background-color: #4925ca !important;
-  cursor: not-allowed !important;
 }

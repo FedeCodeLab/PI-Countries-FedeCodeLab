@@ -1,0 +1,46 @@
+.detail {
+  padding: 30px 0;
+}
+
+.detailContent {
+  color: #fff;
+  display: flex;
+  gap: 100px;
+  margin: 0 auto;
+  padding: 30px;
+  max-width: 1200px;
+}
+
+.detailContent .left,
+.detailContent .right {
+  flex: 1;
+}
+
+.detailContent .left img {
+  width: 100%;
+}
+
+.detailContent .right .column {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailContent .right .column h1 {
+  font-size: 1.6rem;
+}
+
+.detailContent .right .column .flex {
+  padding-top: 30px;
+  display: flex;
+  gap: 60px;
+  font-size: 1.1rem;
+}
+
+.detailContent .right .column .flex span {
+  color: #06aa39;
+  font-weight: 600;
+}
+
+.detailContent .right .column .flex p {
+  padding-bottom: 30px;
+}

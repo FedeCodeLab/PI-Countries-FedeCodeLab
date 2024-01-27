@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import './DetailModules.css'
 
 const Detail = () => {
     const [country, setCountry] = useState({})
     let { id } = useParams()
     useEffect(() => {
-      fetch(`http://localhost:5000/countries`)
+      fetch(`http://localhost:3001/countries`)
       .then(res => res.json())
       .then((data) => {
         const filteredCountry = data.find(c => c.cca3 === id)
@@ -18,15 +19,30 @@ const Detail = () => {
     }, [id]);
 
     return(
-        <div>
-            {country.cca3 && <h1>ID:{country.cca3}</h1>}
-            {country.name && <h1>Name:{country.name.official}</h1>}
-            {country.continents && <h1>Continent/s:{country.continents}</h1>}
-            {country.capital && <h1>Capital:{country.capital}</h1>}
-            {country.area && <h1>Area:{country.area}</h1>}
-            {country.population && <h1>Population:{country.population}</h1>}
-            {country.flags && <img src={country.flags.png}></img>}
-        </div>
+        <article className="detail">
+          <div className="detailContent">
+            <div className="left">
+              {country.flag && <img src={country.flag}></img>}
+            </div>
+            <div className="right">
+              <div className="column">
+                {country.nameOfficial && <h1>{country.nameOfficial}</h1>}
+                <div className="flex">
+                  <div>
+                    {country.cca3 && <p><span>Id: </span>{country.cca3}</p>}
+                    {country.continent && <p><span>Continent: </span>{country.continent}</p>}
+                    {country.capital && <p><span>Capital: </span>{country.capital}</p>}
+                  </div>
+                  <div>
+                    {country.area && <p><span>Area: </span>{country.area}</p>}
+                    {country.area && <p><span>Subregion: </span>{country.subregion}</p>}
+                    {country.population && <p><span>Population: </span>{country.population}</p>}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
     )
 }
 
