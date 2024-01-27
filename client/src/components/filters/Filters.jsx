@@ -8,21 +8,21 @@ import {
 	resetCountries,
 } from "../../redux/actions";
 
-export default function Filters() {
+export default function Filters({ countriesFilter }) {
 	const dispatch = useDispatch();
+	// console.log("countriesFilter: ", countriesFilter);
 
 	const handleChange = (e) => {
 		let { name, value } = e.target;
 		if (name === "orderPop") {
 			dispatch(sortByPopulation(value));
 		} else if (name === "orderAlph") {
-			console.log(value);
 			dispatch(sortByAlphabetical(value));
 		}
 	};
 
 	const handleClick = () => {
-		console.log("holis");
+		// console.log("holis");
 		dispatch(resetCountries());
 	};
 

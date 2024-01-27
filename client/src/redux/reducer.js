@@ -29,7 +29,8 @@ export default function reducer(state = initialState, action) {
 			});
 			return {
 				...state,
-				allCountries: orderPop,
+				// allCountries: orderPop,
+				filterCountries: orderPop,
 			};
 
 		// ? --------------------------------------------------- SORT_ALPHABETICAL
@@ -54,7 +55,7 @@ export default function reducer(state = initialState, action) {
 
 			return {
 				...state,
-				allCountries: orderedCountries,
+				filterCountries: orderedCountries,
 			};
 
 		// ? -------------------------------------------------------- FETCH
@@ -70,7 +71,7 @@ export default function reducer(state = initialState, action) {
 		case FILTER_CONTINENTS:
 			return {
 				...state,
-				continents: action.payload,
+				filterCountries: action.payload,
 			};
 
 		// ? -------------------------------------------------------- RESET
@@ -78,7 +79,7 @@ export default function reducer(state = initialState, action) {
 		case RESET:
 			return {
 				...state,
-				payload,
+				filterCountries: [],
 			};
 
 		// ? -------------------------------------------------------- DEFAULT

@@ -9,9 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchCountries } from "../../redux/actions";
 
 export default function Home() {
-	// ? -------------------------------------------- Fetch y creación de estado countries
-
-	// const countriesFilter = useSelector((state) => state.countries)
+	const countriesFilter = useSelector((state) => state.filterCountries);
 	const allCountries = useSelector((state) => state.allCountries);
 	const dispatch = useDispatch();
 
@@ -19,17 +17,23 @@ export default function Home() {
 		dispatch(fetchCountries());
 	}, [dispatch]);
 
-	// ? -------------------------------------------- Paginado
-
-	const totalCountries = allCountries.length;
 	const [countriesPerPage, setCountriesPerPage] = useState(12);
 	const [currentPage, setCurrentPage] = useState(1);
 
-	const lastIndex = currentPage * countriesPerPage;
-	const firstIndex = lastIndex - countriesPerPage;
-	const currentCountries = allCountries.slice(firstIndex, lastIndex);
+	let currentCountries;
+	let totalCountries;
 
-	// const totalPaginationCountries = countries.length()
+	if (countriesFilter.length >= 1) {
+		totalCountries = countriesFilter.length;
+		const lastIndex = currentPage * countriesPerPage;
+		const firstIndex = lastIndex - countriesPerPage;
+		currentCountries = countriesFilter.slice(firstIndex, lastIndex);
+	} else {
+		totalCountries = allCountries.length;
+		const lastIndex = currentPage * countriesPerPage;
+		const firstIndex = lastIndex - countriesPerPage;
+		currentCountries = allCountries.slice(firstIndex, lastIndex);
+	}
 
 	return (
 		<section className="home">
@@ -46,7 +50,7 @@ export default function Home() {
 				</article>
 			</div>
 
-			<Filters allCountries={allCountries} />
+			<Filters allCountries={allCountries} countriesFilter={countriesFilter} />
 
 			<Cards countries={currentCountries} />
 
