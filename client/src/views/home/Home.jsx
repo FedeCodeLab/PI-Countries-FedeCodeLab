@@ -4,11 +4,12 @@ import Cards from "../../components/cards/Cards";
 import Pagination from "../../components/pagination/Pagination";
 import Filters from "../../components/filters/Filters";
 
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCountries } from "../../redux/actions";
 
-export default function Home() {
+export default function Home({ porfolio }) {
 	const countriesFilter = useSelector((state) => state.filterCountries);
 	const allCountries = useSelector((state) => state.allCountries);
 	const dispatch = useDispatch();
@@ -42,7 +43,9 @@ export default function Home() {
 					<div className="home-left">
 						<h1>Aquí puedes obtener un listado de países de todo el mundo</h1>
 						<p>Proyecto Integrador de Federico Guzmán</p>
-						<button>Portfolio</button>
+						<Link to={`${porfolio}`} target="_blank">
+							<button>Portfolio</button>
+						</Link>
 					</div>
 					<div className="home-right">
 						<div id="earth"></div>

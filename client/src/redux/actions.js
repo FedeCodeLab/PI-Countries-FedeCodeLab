@@ -3,6 +3,7 @@ export const FETCH = "FETCH";
 export const FILTER_CONTINENTS = "FILTER_CONTINENTS";
 export const SORT_POPULATION = "SORT_POPULATION";
 export const RESET = "RESET";
+export const GET_NAME = "GET_NAME";
 
 export function sortByAlphabetical(order) {
 	return {
@@ -46,3 +47,24 @@ export const resetCountries = () => {
 		type: RESET,
 	};
 };
+
+export function getCountriesName(name) {
+	return async function (dispatch) {
+		try {
+			let response = await fetch(
+				`http://localhost:3001/countries/q?nameCommon=${name}`
+			);
+			if (!response.ok) {
+				throw new Error("Country not found");
+			}
+			let countriesName = await response.json();
+			return dispatch({
+				type: GET_NAME,
+				payload: countriesName,
+			});
+		} catch (error) {
+			alert(error.message);
+			console.error(error);
+		}
+	};
+}

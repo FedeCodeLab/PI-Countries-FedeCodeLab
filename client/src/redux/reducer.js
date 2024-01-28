@@ -4,6 +4,7 @@ import {
 	FETCH,
 	SORT_POPULATION,
 	RESET,
+	GET_NAME,
 } from "./actions";
 
 const initialState = {
@@ -67,12 +68,19 @@ export default function reducer(state = initialState, action) {
 			};
 
 		// ? ------------------------------------------------------ FILTER_CONTINENTS
-
 		case FILTER_CONTINENTS:
-			return {
-				...state,
-				filterCountries: action.payload,
-			};
+			console.log(action.payload);
+			const filteredContinents =
+				action.payload === "All"
+					? { ...state, filterCountries: state.allCountries }
+					: {
+							...state,
+							filterCountries: state.allCountries.filter(
+								(c) => c.continent === action.payload
+							),
+					  };
+			console.log("Filtered Countries:", filteredContinents.filterCountries); // Verifica los países filtrados
+			return { ...state, ...filteredContinents };
 
 		// ? -------------------------------------------------------- RESET
 
@@ -80,6 +88,14 @@ export default function reducer(state = initialState, action) {
 			return {
 				...state,
 				filterCountries: [],
+			};
+
+		// ? ---------------------------------------------------------- GET NAME
+
+		case GET_NAME:
+			return {
+				...state,
+				filterCountries: action.payload,
 			};
 
 		// ? -------------------------------------------------------- DEFAULT

@@ -1,0 +1,37 @@
+.activities form {
+	width: 800px;
+	background-color: #191927;
+	padding: 15px;
+	margin: 0 auto;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.activities form h1 {
+	text-align: center;
+}
+
+.activities form div {
+	display: flex;
+	flex-direction: column;
+}
+
+.activities form div label {
+	color: #fff;
+}
+
+.activities form div input {
+	padding: 10px;
+	background-color: #26263a;
+	border: none;
+	color: #fff;
+}
+
+.activities form div select {
+	background-color: #26263a;
+	border: none;
+	padding: 10px;
+	color: #fff;
+}
