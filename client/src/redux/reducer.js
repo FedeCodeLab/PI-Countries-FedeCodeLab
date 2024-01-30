@@ -5,12 +5,13 @@ import {
 	SORT_POPULATION,
 	RESET,
 	GET_NAME,
+	POST_ACTIVITIES,
 } from "./actions";
 
 const initialState = {
 	allCountries: [],
 	filterCountries: [], //filtrados
-	// continents: "All",
+	activities: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -18,16 +19,31 @@ export default function reducer(state = initialState, action) {
 		// ? --------------------------------------------------- SORT_POPULATION
 
 		case SORT_POPULATION:
-			const orderPop = state.allCountries.toSorted((a, b) => {
-				switch (action.payload) {
-					case "Asc":
-						return a.population - b.population;
-					case "Desc":
-						return b.population - a.population;
-					default:
-						return 0;
-				}
-			});
+			let orderPop;
+			if (filterCountries.length === 0) {
+				orderPop = state.allCountries.toSorted((a, b) => {
+					switch (action.payload) {
+						case "Asc":
+							return a.population - b.population;
+						case "Desc":
+							return b.population - a.population;
+						default:
+							return 0;
+					}
+				});
+			} else {
+				orderPop = state.filterCountries.toSorted((a, b) => {
+					switch (action.payload) {
+						case "Asc":
+							return a.population - b.population;
+						case "Desc":
+							return b.population - a.population;
+						default:
+							return 0;
+					}
+				});
+			}
+
 			return {
 				...state,
 				// allCountries: orderPop,
@@ -37,7 +53,13 @@ export default function reducer(state = initialState, action) {
 		// ? --------------------------------------------------- SORT_ALPHABETICAL
 
 		case SORT_ALPHABETICAL:
-			let orderedCountries = [...state.allCountries];
+			let orderedCountries;
+
+			if (filterCountries.length === 0) {
+				orderedCountries = [...state.allCountries];
+			} else {
+				orderedCountries = [...state.filterCountries];
+			}
 
 			switch (action.payload) {
 				case "Asc":
@@ -70,15 +92,29 @@ export default function reducer(state = initialState, action) {
 		// ? ------------------------------------------------------ FILTER_CONTINENTS
 		case FILTER_CONTINENTS:
 			console.log(action.payload);
-			const filteredContinents =
-				action.payload === "All"
-					? { ...state, filterCountries: state.allCountries }
-					: {
-							...state,
-							filterCountries: state.allCountries.filter(
-								(c) => c.continent === action.payload
-							),
-					  };
+			let filteredContinents;
+			if (filterCountries.length === 0) {
+				filteredContinents =
+					action.payload === "All"
+						? { ...state, filterCountries: state.allCountries }
+						: {
+								...state,
+								filterCountries: state.allCountries.filter(
+									(c) => c.continent === action.payload
+								),
+						  };
+			} else {
+				filteredContinents =
+					action.payload === "All"
+						? { ...state, filterCountries: state.filterCountries }
+						: {
+								...state,
+								filterCountries: state.filterCountries.filter(
+									(c) => c.continent === action.payload
+								),
+						  };
+			}
+
 			console.log("Filtered Countries:", filteredContinents.filterCountries); // Verifica los países filtrados
 			return { ...state, ...filteredContinents };
 
@@ -96,6 +132,16 @@ export default function reducer(state = initialState, action) {
 			return {
 				...state,
 				filterCountries: action.payload,
+			};
+
+		// ? ----------------------------------------------------------- POST ACTIVITY
+
+		case POST_ACTIVITIES:
+			const { payload } = action;
+			console.log("esto es un payload", payload);
+			return {
+				...state,
+				activities: [...state.activities, payload],
 			};
 
 		// ? -------------------------------------------------------- DEFAULT

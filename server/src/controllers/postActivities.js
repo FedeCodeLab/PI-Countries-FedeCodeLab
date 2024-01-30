@@ -2,6 +2,7 @@ const { Activity, Country } = require("../db");
 
 const postActivities = async (req, res) => {
 	const { name, difficulty, duration, season, countries } = req.body;
+	console.log(req.body);
 	try {
 		const numericDifficulty = parseInt(difficulty, 10);
 

@@ -7,16 +7,16 @@ import Filters from "../../components/filters/Filters";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCountries } from "../../redux/actions";
+// import { fetchCountries } from "../../redux/actions";
 
-export default function Home({ porfolio }) {
+export default function Home({ porfolio, allCountries }) {
 	const countriesFilter = useSelector((state) => state.filterCountries);
-	const allCountries = useSelector((state) => state.allCountries);
+	// const allCountries = useSelector((state) => state.allCountries);
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(fetchCountries());
-	}, [dispatch]);
+	// useEffect(() => {
+	// 	dispatch(fetchCountries());
+	// }, [dispatch]);
 
 	const [countriesPerPage, setCountriesPerPage] = useState(12);
 	const [currentPage, setCurrentPage] = useState(1);

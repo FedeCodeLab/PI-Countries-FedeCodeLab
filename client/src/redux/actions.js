@@ -1,9 +1,11 @@
+import axios from "axios";
 export const SORT_ALPHABETICAL = "SORT_ALPHABETICAL";
 export const FETCH = "FETCH";
 export const FILTER_CONTINENTS = "FILTER_CONTINENTS";
 export const SORT_POPULATION = "SORT_POPULATION";
 export const RESET = "RESET";
 export const GET_NAME = "GET_NAME";
+export const POST_ACTIVITIES = "POST_ACTIVITIES";
 
 export function sortByAlphabetical(order) {
 	return {
@@ -65,6 +67,26 @@ export function getCountriesName(name) {
 		} catch (error) {
 			alert(error.message);
 			console.error(error);
+		}
+	};
+}
+
+export function postActivity(payload) {
+	return async function (dispatch) {
+		try {
+			// Realizar la solicitud POST al servidor
+			const response = await axios.post(
+				"http://localhost:3001/createActivity",
+				payload
+			);
+			// Dispatch de la acción si la solicitud fue exitosa
+			dispatch({
+				type: POST_ACTIVITIES,
+				payload: response.data, // Si el servidor devuelve datos útiles, puedes usarlos aquí
+			});
+			// Puedes hacer algo adicional aquí después de que se complete la solicitud, si es necesario
+		} catch (err) {
+			console.log("Tienes un error en: ", err);
 		}
 	};
 }

@@ -35,3 +35,51 @@
 	padding: 10px;
 	color: #fff;
 }
+
+.activities form div .flex {
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+}
+
+.activities form div .flex select,
+.activities form div .flex div {
+	width: 50%;
+}
+
+.activities form .list {
+	width: 100%;
+	min-height: 100px;
+	background-color: #26263a;
+	padding: 15px;
+}
+
+.activities form .list ul {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	gap: 15px;
+	flex-wrap: wrap;
+}
+
+.activities form .list ul li {
+	background-color: #191927;
+	padding: 10px 20px;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	-ms-border-radius: 50px;
+	-o-border-radius: 50px;
+	position: relative;
+}
+
+.activities form .list ul li button {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: -10px;
+	right: -10px;
+	width: 20px;
+	height: 30px;
+}

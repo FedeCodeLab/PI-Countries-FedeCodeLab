@@ -11,6 +11,9 @@ import Activities from "./views/activities/activities";
 const EMAIL = "f@f.com";
 const PASSWORD = "hola123";
 
+import { useSelector, useDispatch } from "react-redux";
+import { fetchCountries } from "./redux/actions";
+
 function App() {
 	const linkedIn = "https://www.linkedin.com/in/fedecodelab/";
 	const github = "https://github.com/FedeCodeLab";
@@ -38,6 +41,17 @@ function App() {
 		setAccess(!access);
 	};
 
+	// ?---------------------------------------------------------- Fetch allCoutries
+
+	const allCountries = useSelector((state) => state.allCountries);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchCountries());
+	}, [dispatch]);
+
+	// ? -------------------------------------------------------------- Return
+
 	return (
 		<div className="App">
 			{pathname !== "/" && (
@@ -51,7 +65,10 @@ function App() {
 			<main>
 				<Routes>
 					<Route path="/" element={<Login login={login} />} />
-					<Route path="/home" element={<Home porfolio={PORFOLIO} />} />
+					<Route
+						path="/home"
+						element={<Home porfolio={PORFOLIO} allCountries={allCountries} />}
+					/>
 					<Route
 						path="/about"
 						element={
@@ -59,7 +76,10 @@ function App() {
 						}
 					/>
 					<Route path="/detail/:id" element={<Detail />} />
-					<Route path="/activities" element={<Activities />} />
+					<Route
+						path="/activities"
+						element={<Activities allCountries={allCountries} />}
+					/>
 				</Routes>
 			</main>
 			{pathname !== "/" && (

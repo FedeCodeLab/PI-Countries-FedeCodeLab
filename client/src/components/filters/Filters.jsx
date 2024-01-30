@@ -28,17 +28,13 @@ export default function Filters({ countriesFilter }) {
 		dispatch(resetCountries());
 	};
 
-	const show = () => {
-		console.log(countriesFilter);
-	};
-
 	const search = (e) => {
 		const { value } = e.target;
-		setName(value); // Actualiza el estado 'name' con el valor del campo de búsqueda
+		setName(value);
 	};
 
 	const handleSubmit = () => {
-		dispatch(getCountriesName(name)); // Dispara la acción getCountriesName con el valor de 'name'
+		dispatch(getCountriesName(name));
 	};
 
 	return (
@@ -83,7 +79,6 @@ export default function Filters({ countriesFilter }) {
 				<option value="Desc">Descendente</option>
 			</select>
 			<button onClick={handleClick}>Reset</button>
-			<button onClick={show}>Show</button>
 			<div className="search-container">
 				<input type="search" placeholder="Countries..." onChange={search} />
 				<button onClick={handleSubmit}>Search</button>

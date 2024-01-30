@@ -27,26 +27,3 @@ const getCountries = async () => {
 };
 
 module.exports = getCountries;
-
-// const getCountries = async () => {
-// 	try {
-// 		const api = await fetch("http://localhost:5000/countries");
-// 		const data = await api.json();
-// 		const map = data.map((m) => ({
-// 			cca3: m.cca3,
-// 			nameCommon: m.name.common,
-// 			nameOfficial: m.name.official,
-// 			flag: m.flags.png,
-// 			capital: m.capital,
-// 			continent: m.region,
-// 			subregion: m.subregion,
-// 			area: m.area,
-// 			population: m.population,
-// 		}));
-// 		await Country.bulkCreate(map);
-// 	} catch (error) {
-// 		console.error(error.message);
-// 	}
-// };
-
-// module.exports = getCountries;

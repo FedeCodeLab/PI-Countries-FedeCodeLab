@@ -5,6 +5,7 @@ const getCountryByName = require("../controllers/getCountryByName");
 const postActivities = require("../controllers/postActivities");
 const getCountryById = require("../controllers/getCountryById");
 const getActivities = require("../controllers/getActivities");
+const getCountryActivities = require("../controllers/getCountryActivities");
 
 const router = Router();
 
@@ -12,7 +13,8 @@ const router = Router();
 router.get("/countries", getAllCountries);
 router.get("/countries/q", getCountryByName);
 router.get(`/countries/id/:cca3`, getCountryById);
-router.post(`/activities`, postActivities);
+router.post(`/createActivity`, postActivities);
 router.get(`/activities`, getActivities);
+router.get("/countriesActivities/:activity", getCountryActivities);
 
 module.exports = router;

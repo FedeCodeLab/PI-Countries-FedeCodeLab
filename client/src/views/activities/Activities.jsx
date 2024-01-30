@@ -1,10 +1,10 @@
 import "./ActivitiesModules.css";
 import Form from "../../components/formActivity/form";
 
-export default function Activities() {
+export default function Activities({ allCountries }) {
 	return (
 		<section className="activities container">
-			<Form />
+			<Form allCountries={allCountries} />
 		</section>
 	);
 }
