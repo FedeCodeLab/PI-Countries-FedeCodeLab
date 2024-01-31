@@ -1,32 +1,34 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./DetailModules.css";
 
 const Detail = () => {
 	const [country, setCountry] = useState({});
+	const [activities, setActivities] = useState([]);
 	let { id } = useParams();
+
 	useEffect(() => {
-		fetch(`http://localhost:3001/countries`)
+		fetch(`http://localhost:3001/countries/id/${id}`)
 			.then((res) => res.json())
 			.then((data) => {
-				const filteredCountry = data.find((c) => c.cca3 === id);
-				if (filteredCountry) {
-					setCountry(filteredCountry);
+				if (data) {
+					setCountry(data[0]); // Primer objeto es la información del país
+					setActivities(data[1]); // Segundo objeto es el array de actividades
 				} else {
 					alert("No se encontró un país con ese id");
 				}
 			})
-			.catch((err) => window.alert("No existe pais con ese id"));
+			.catch((err) => window.alert("No existe país con ese id"));
 	}, [id]);
 
 	return (
-		<article className="detail">
-			<div className="detailContent">
-				<div className="left">
-					{country.flag && <img src={country.flag}></img>}
-				</div>
-				<div className="right">
-					<div className="column">
+		<article className="detail container">
+			{Object.keys(country).length > 0 && (
+				<div className="detailCountry">
+					<div className="left">
+						{country.flag && <img src={country.flag} alt="Flag" />}
+					</div>
+					<div className="right">
 						{country.nameOfficial && <h1>{country.nameOfficial}</h1>}
 						<div className="flex">
 							<div>
@@ -49,6 +51,7 @@ const Detail = () => {
 									</p>
 								)}
 							</div>
+
 							<div>
 								{country.area && (
 									<p>
@@ -56,7 +59,7 @@ const Detail = () => {
 										{country.area}
 									</p>
 								)}
-								{country.area && (
+								{country.subregion && (
 									<p>
 										<span>Subregion: </span>
 										{country.subregion}
@@ -72,7 +75,34 @@ const Detail = () => {
 						</div>
 					</div>
 				</div>
-			</div>
+			)}
+
+			{activities.length > 0 && (
+				<div className="detailActivities">
+					<h3>Actividades que se llevan a cabo en este país:</h3>
+					<div className="grid">
+						{activities.map((activity) => (
+							<div className="activity" key={activity.id}>
+								<h3>{activity.name}</h3>
+								<div className="activity-content">
+									<p>
+										<span>Duración: </span>
+										{activity.duration}
+									</p>
+									<p>
+										<span>Dificultad: </span>
+										{activity.difficulty}
+									</p>
+									<p>
+										<span>Temporada: </span>
+										{activity.season}
+									</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			)}
 		</article>
 	);
 };

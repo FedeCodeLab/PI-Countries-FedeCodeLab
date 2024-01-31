@@ -9,14 +9,14 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { fetchCountries } from "../../redux/actions";
 
-export default function Home({ porfolio, allCountries }) {
-	const countriesFilter = useSelector((state) => state.filterCountries);
-	// const allCountries = useSelector((state) => state.allCountries);
+export default function Home({
+	porfolio,
+	allCountries,
+	allActivities,
+	filterActivities,
+}) {
 	const dispatch = useDispatch();
-
-	// useEffect(() => {
-	// 	dispatch(fetchCountries());
-	// }, [dispatch]);
+	const countriesFilter = useSelector((state) => state.filterCountries);
 
 	const [countriesPerPage, setCountriesPerPage] = useState(12);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -24,17 +24,36 @@ export default function Home({ porfolio, allCountries }) {
 	let currentCountries;
 	let totalCountries;
 
-	if (countriesFilter.length >= 1) {
-		totalCountries = countriesFilter.length;
+	if (filterActivities.length >= 1) {
+		totalCountries = filterActivities.length;
 		const lastIndex = currentPage * countriesPerPage;
 		const firstIndex = lastIndex - countriesPerPage;
-		currentCountries = countriesFilter.slice(firstIndex, lastIndex);
+		currentCountries = filterActivities.slice(firstIndex, lastIndex);
 	} else {
-		totalCountries = allCountries.length;
-		const lastIndex = currentPage * countriesPerPage;
-		const firstIndex = lastIndex - countriesPerPage;
-		currentCountries = allCountries.slice(firstIndex, lastIndex);
+		if (countriesFilter.length >= 1) {
+			totalCountries = countriesFilter.length;
+			const lastIndex = currentPage * countriesPerPage;
+			const firstIndex = lastIndex - countriesPerPage;
+			currentCountries = countriesFilter.slice(firstIndex, lastIndex);
+		} else {
+			totalCountries = allCountries.length;
+			const lastIndex = currentPage * countriesPerPage;
+			const firstIndex = lastIndex - countriesPerPage;
+			currentCountries = allCountries.slice(firstIndex, lastIndex);
+		}
 	}
+
+	// if (countriesFilter.length >= 1) {
+	// 	totalCountries = countriesFilter.length;
+	// 	const lastIndex = currentPage * countriesPerPage;
+	// 	const firstIndex = lastIndex - countriesPerPage;
+	// 	currentCountries = countriesFilter.slice(firstIndex, lastIndex);
+	// } else {
+	// 	totalCountries = allCountries.length;
+	// 	const lastIndex = currentPage * countriesPerPage;
+	// 	const firstIndex = lastIndex - countriesPerPage;
+	// 	currentCountries = allCountries.slice(firstIndex, lastIndex);
+	// }
 
 	return (
 		<section className="home">
@@ -53,7 +72,10 @@ export default function Home({ porfolio, allCountries }) {
 				</article>
 			</div>
 
-			<Filters allCountries={allCountries} countriesFilter={countriesFilter} />
+			<Filters
+				allActivities={allActivities}
+				filterActivities={filterActivities}
+			/>
 
 			<Cards countries={currentCountries} />
 

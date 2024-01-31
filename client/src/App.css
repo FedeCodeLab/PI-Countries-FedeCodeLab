@@ -1,90 +1,92 @@
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  transition: all .2s ease;
-  -webkit-transition: all .2s ease;
-  -moz-transition: all .2s ease;
-  -ms-transition: all .2s ease;
-  -o-transition: all .2s ease;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-ms-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
 }
 
 #root {
-  /* background-color: #030620; */
-  background-color: rgb(14, 14, 27);
+	/* background-color: #030620; */
+	background-color: rgb(14, 14, 27);
 }
 
 .dark {
-  background-color: #12192C;
+	background-color: #12192c;
 }
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-  background-color: #F3F3F3;
-  color: #222;
-  font-family: 'DM Sans', sans-serif;
+	background-color: #191927;
+	color: #222;
+	font-family: "DM Sans", sans-serif;
 }
 
 section {
-  min-height: 100vh;
+	min-height: 100vh;
 }
 
 .container {
-  width: 90%;
-  margin: 0 auto;
+	width: 90%;
+	margin: 0 auto;
 }
 
 button {
-  cursor: pointer;
-  background-color: #5A3AC9;
-  color: #fff;
-  border: none;
-  padding: 12px 15px;
-  font-weight: 500;
-  font-size: .8rem;
-  letter-spacing: 1px;
-  font-family: 'DM Sans', sans-serif;
-  border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
+	cursor: pointer;
+	background-color: #5a3ac9;
+	color: #fff;
+	border: none;
+	padding: 12px 15px;
+	font-weight: 500;
+	font-size: 0.8rem;
+	letter-spacing: 1px;
+	font-family: "DM Sans", sans-serif;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	-ms-border-radius: 50px;
+	-o-border-radius: 50px;
 }
 
 button:hover {
-  background-color: #4925ca;
+	background-color: #4925ca;
 }
 
 label {
-  font-size: .9rem;
-  color: #5232C6;
-  margin-bottom: 5px;
+	font-size: 0.9rem;
+	color: #5232c6;
+	margin-bottom: 5px;
 }
 
-h1,h2,h3 {
-  font-weight: 500;
+h1,
+h2,
+h3 {
+	font-weight: 500;
 }
 
 a {
-  color: #fff;
-  text-decoration: none;
+	color: #fff;
+	text-decoration: none;
 }
 
 .bold {
-  font-weight: 700;
+	font-weight: 700;
 }
 
 .line {
-  border: 2px solid #ffffff;
-  width: 100%;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+	border: 2px solid #ffffff;
+	width: 100%;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
 }
 
 /* Earth */
@@ -96,8 +98,7 @@ a {
 	border-radius: 50%;
 	background: transparent url("https://i.imgur.com/Qk4UXcU.png");
 	background-size: cover;
-	box-shadow: inset 0px -20px 50px 10px #00ffff80,
-        0px 0px 30px 6px #00ffff80;
+	box-shadow: inset 0px -20px 50px 10px #00ffff80, 0px 0px 30px 6px #00ffff80;
 	transform-style: preserve-3d;
 	transform: rotate(20deg);
 	animation: rotate 15s linear infinite;

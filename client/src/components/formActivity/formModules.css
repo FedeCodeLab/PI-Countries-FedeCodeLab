@@ -42,9 +42,8 @@
 	gap: 30px;
 }
 
-.activities form div .flex select,
-.activities form div .flex div {
-	width: 50%;
+.activities form div .flex select {
+	width: 100%;
 }
 
 .activities form .list {

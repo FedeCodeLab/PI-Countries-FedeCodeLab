@@ -5,9 +5,9 @@ const getCountryActivities = async (req, res) => {
 		const { activity } = req.params;
 		const act = await Activity.findOne({ where: { name: activity } });
 
-		console.log("hola", act);
 		if (act) {
 			const countryAct = await act.getCountries();
+			console.log(countryAct);
 			res.status(200).json(countryAct);
 		} else {
 			res.status(400).send("Actividad no encontrada");

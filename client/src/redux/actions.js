@@ -1,11 +1,15 @@
 import axios from "axios";
 export const SORT_ALPHABETICAL = "SORT_ALPHABETICAL";
 export const FETCH = "FETCH";
+export const FETCH_ACITIVITIES = "FETCH_ACITIVITIES";
 export const FILTER_CONTINENTS = "FILTER_CONTINENTS";
 export const SORT_POPULATION = "SORT_POPULATION";
 export const RESET = "RESET";
 export const GET_NAME = "GET_NAME";
 export const POST_ACTIVITIES = "POST_ACTIVITIES";
+export const FILTER_ACTIVITIES = "FILTER_ACTIVITIES";
+
+// ? ---------------------------------------------------------------- SORT BY ALPHABETICAL
 
 export function sortByAlphabetical(order) {
 	return {
@@ -14,12 +18,16 @@ export function sortByAlphabetical(order) {
 	};
 }
 
+// ? ---------------------------------------------------------------- SORT BY POPULATION
+
 export function sortByPopulation(order) {
 	return {
 		type: SORT_POPULATION,
 		payload: order,
 	};
 }
+
+// ? ---------------------------------------------------------------- FETCH
 
 export function fetchCountries() {
 	return async (dispatch) => {
@@ -37,6 +45,8 @@ export function fetchCountries() {
 	};
 }
 
+// ? ---------------------------------------------------------------- FILTER CONTINENTS
+
 export const filterContinents = (continent) => {
 	return {
 		type: FILTER_CONTINENTS,
@@ -44,11 +54,15 @@ export const filterContinents = (continent) => {
 	};
 };
 
+// ? ---------------------------------------------------------------- RESET COUNTRIES
+
 export const resetCountries = () => {
 	return {
 		type: RESET,
 	};
 };
+
+// ? ---------------------------------------------------------------- GET COUNTRIES NAME
 
 export function getCountriesName(name) {
 	return async function (dispatch) {
@@ -71,22 +85,48 @@ export function getCountriesName(name) {
 	};
 }
 
+// ? ---------------------------------------------------------------- POST ACTIVITY
+
 export function postActivity(payload) {
 	return async function (dispatch) {
 		try {
-			// Realizar la solicitud POST al servidor
 			const response = await axios.post(
 				"http://localhost:3001/createActivity",
 				payload
 			);
-			// Dispatch de la acción si la solicitud fue exitosa
 			dispatch({
 				type: POST_ACTIVITIES,
-				payload: response.data, // Si el servidor devuelve datos útiles, puedes usarlos aquí
+				payload: response.data,
 			});
-			// Puedes hacer algo adicional aquí después de que se complete la solicitud, si es necesario
 		} catch (err) {
 			console.log("Tienes un error en: ", err);
 		}
 	};
 }
+
+// ? -------------------------------------------------------------------- FETCH ACTIVITIES
+
+export function fetchActivities() {
+	return async (dispatch) => {
+		try {
+			const response = await fetch("http://localhost:3001/activities");
+			const data = await response.json();
+			console.log(data);
+			dispatch({
+				type: FETCH_ACITIVITIES,
+				payload: data,
+			});
+		} catch (error) {
+			console.error("Error fetching countries:", error);
+		}
+	};
+}
+
+// ? ---------------------------------------------------------------- FILTER ACTIVITIES
+
+export const filterActivity = (activities) => {
+	return {
+		type: FILTER_ACTIVITIES,
+		payload: activities,
+	};
+};

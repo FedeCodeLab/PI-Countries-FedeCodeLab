@@ -1,46 +1,108 @@
 .detail {
-  padding: 30px 0;
+	padding: 30px 0;
+	max-width: 1000px;
+	color: #fff;
 }
 
-.detailContent {
-  color: #fff;
-  display: flex;
-  gap: 100px;
-  margin: 0 auto;
-  padding: 30px;
-  max-width: 1200px;
+.detailCountry {
+	display: flex;
+	gap: 60px;
 }
 
-.detailContent .left,
-.detailContent .right {
-  flex: 1;
+.detailCountry .left,
+.detailCountry .right {
+	flex: 1;
 }
 
-.detailContent .left img {
-  width: 100%;
+.detailCountry .left img {
+	width: 100%;
 }
 
-.detailContent .right .column {
-  display: flex;
-  flex-direction: column;
+.detailCountry .right h1 {
+	color: #06aa39;
+	padding-bottom: 30px;
 }
 
-.detailContent .right .column h1 {
-  font-size: 1.6rem;
+.detailCountry .right .flex {
+	display: flex;
+	gap: 60px;
 }
 
-.detailContent .right .column .flex {
-  padding-top: 30px;
-  display: flex;
-  gap: 60px;
-  font-size: 1.1rem;
+.detailCountry .right .flex div {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.detailCountry .right .flex div span {
+	color: #06aa39;
+	font-weight: 600;
 }
 
 .detailContent .right .column .flex span {
-  color: #06aa39;
-  font-weight: 600;
+	color: #06aa39;
+	font-weight: 600;
 }
 
-.detailContent .right .column .flex p {
-  padding-bottom: 30px;
+.detailActivities {
+	margin-top: 30px;
+}
+
+.detailActivities h3 {
+	color: #06aa39;
+	text-align: center;
+}
+
+.detailActivities .grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+	padding-top: 30px;
+	/* align-content: stretch; */
+}
+
+.detailActivities .grid .activity {
+	background-color: #191927;
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+}
+
+.detailActivities .grid .activity h3 {
+	margin-bottom: 10px;
+	font-size: 1.3rem;
+}
+
+.detailActivities .grid .activity .activity-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.detailActivities .grid .activity .activity-content p span {
+	color: #06aa39;
+	font-weight: 600;
+}
+
+/* ?----------------------------------------------------- Mediaquery */
+
+@media screen and (max-width: 900px) {
+	.detailActivities .grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.detailActivities .grid {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }

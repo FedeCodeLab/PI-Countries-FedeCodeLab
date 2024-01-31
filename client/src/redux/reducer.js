@@ -6,12 +6,15 @@ import {
 	RESET,
 	GET_NAME,
 	POST_ACTIVITIES,
+	FETCH_ACITIVITIES,
+	FILTER_ACTIVITIES,
 } from "./actions";
 
 const initialState = {
 	allCountries: [],
 	filterCountries: [], //filtrados
-	activities: [],
+	allActivities: [],
+	filterActivities: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -20,29 +23,17 @@ export default function reducer(state = initialState, action) {
 
 		case SORT_POPULATION:
 			let orderPop;
-			if (filterCountries.length === 0) {
-				orderPop = state.allCountries.toSorted((a, b) => {
-					switch (action.payload) {
-						case "Asc":
-							return a.population - b.population;
-						case "Desc":
-							return b.population - a.population;
-						default:
-							return 0;
-					}
-				});
-			} else {
-				orderPop = state.filterCountries.toSorted((a, b) => {
-					switch (action.payload) {
-						case "Asc":
-							return a.population - b.population;
-						case "Desc":
-							return b.population - a.population;
-						default:
-							return 0;
-					}
-				});
-			}
+
+			orderPop = state.allCountries.toSorted((a, b) => {
+				switch (action.payload) {
+					case "Asc":
+						return a.population - b.population;
+					case "Desc":
+						return b.population - a.population;
+					default:
+						return 0;
+				}
+			});
 
 			return {
 				...state,
@@ -53,13 +44,7 @@ export default function reducer(state = initialState, action) {
 		// ? --------------------------------------------------- SORT_ALPHABETICAL
 
 		case SORT_ALPHABETICAL:
-			let orderedCountries;
-
-			if (filterCountries.length === 0) {
-				orderedCountries = [...state.allCountries];
-			} else {
-				orderedCountries = [...state.filterCountries];
-			}
+			let orderedCountries = [...state.allCountries];
 
 			switch (action.payload) {
 				case "Asc":
@@ -89,31 +74,25 @@ export default function reducer(state = initialState, action) {
 				allCountries: action.payload,
 			};
 
+		case FETCH_ACITIVITIES:
+			return {
+				...state,
+				allActivities: action.payload,
+			};
+
 		// ? ------------------------------------------------------ FILTER_CONTINENTS
 		case FILTER_CONTINENTS:
 			console.log(action.payload);
 			let filteredContinents;
-			if (filterCountries.length === 0) {
-				filteredContinents =
-					action.payload === "All"
-						? { ...state, filterCountries: state.allCountries }
-						: {
-								...state,
-								filterCountries: state.allCountries.filter(
-									(c) => c.continent === action.payload
-								),
-						  };
-			} else {
-				filteredContinents =
-					action.payload === "All"
-						? { ...state, filterCountries: state.filterCountries }
-						: {
-								...state,
-								filterCountries: state.filterCountries.filter(
-									(c) => c.continent === action.payload
-								),
-						  };
-			}
+			filteredContinents =
+				action.payload === "All"
+					? { ...state, filterCountries: state.allCountries }
+					: {
+							...state,
+							filterCountries: state.allCountries.filter(
+								(c) => c.continent === action.payload
+							),
+					  };
 
 			console.log("Filtered Countries:", filteredContinents.filterCountries); // Verifica los países filtrados
 			return { ...state, ...filteredContinents };
@@ -124,6 +103,7 @@ export default function reducer(state = initialState, action) {
 			return {
 				...state,
 				filterCountries: [],
+				filterActivities: [],
 			};
 
 		// ? ---------------------------------------------------------- GET NAME
@@ -141,8 +121,23 @@ export default function reducer(state = initialState, action) {
 			console.log("esto es un payload", payload);
 			return {
 				...state,
-				activities: [...state.activities, payload],
+				allActivities: [...state.allActivities, payload],
 			};
+
+		// ? ------------------------------------------------------------ FILTER ACTIVITIES
+
+		case FILTER_ACTIVITIES:
+			let filteredActivities;
+			filteredActivities =
+				action.payload === "All"
+					? { ...state, filterActivities: state.allActivities }
+					: {
+							...state,
+							filterActivities: state.allActivities.filter(
+								(activity) => activity.name === action.payload
+							),
+					  };
+			return { ...state, ...filteredActivities };
 
 		// ? -------------------------------------------------------- DEFAULT
 

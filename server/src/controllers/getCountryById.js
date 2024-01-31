@@ -6,8 +6,13 @@ const getCountryById = async (req, res) => {
 		const country = await Country.findOne({
 			where: { cca3 },
 		});
+		const countryActivity = await country.getActivities();
+		console.log(countryActivity);
 		if (country) {
-			res.status(200).json(country);
+			let detailArray = [];
+			detailArray.push(country);
+			detailArray.push(countryActivity);
+			res.status(200).json(detailArray);
 		}
 	} catch (error) {
 		res.status(500).json({ error: error.message });

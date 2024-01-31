@@ -12,7 +12,7 @@ const EMAIL = "f@f.com";
 const PASSWORD = "hola123";
 
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCountries } from "./redux/actions";
+import { fetchCountries, fetchActivities } from "./redux/actions";
 
 function App() {
 	const linkedIn = "https://www.linkedin.com/in/fedecodelab/";
@@ -22,6 +22,7 @@ function App() {
 	const navigate = useNavigate();
 
 	// ! --------------------------------------------------- Login
+	const dispatch = useDispatch();
 	const [access, setAccess] = useState(false);
 	const login = ({ email, password }) => {
 		if (email === EMAIL && password === PASSWORD) {
@@ -44,10 +45,18 @@ function App() {
 	// ?---------------------------------------------------------- Fetch allCoutries
 
 	const allCountries = useSelector((state) => state.allCountries);
-	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(fetchCountries());
+	}, [dispatch]);
+
+	// ?---------------------------------------------------------- Fetch allActivities
+
+	const allActivities = useSelector((state) => state.allActivities);
+	const filterActivities = useSelector((state) => state.filterActivities);
+
+	useEffect(() => {
+		dispatch(fetchActivities());
 	}, [dispatch]);
 
 	// ? -------------------------------------------------------------- Return
@@ -67,7 +76,14 @@ function App() {
 					<Route path="/" element={<Login login={login} />} />
 					<Route
 						path="/home"
-						element={<Home porfolio={PORFOLIO} allCountries={allCountries} />}
+						element={
+							<Home
+								porfolio={PORFOLIO}
+								allCountries={allCountries}
+								allActivities={allActivities}
+								filterActivities={filterActivities}
+							/>
+						}
 					/>
 					<Route
 						path="/about"
